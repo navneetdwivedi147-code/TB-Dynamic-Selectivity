@@ -1,0 +1,26 @@
+==============================================================================
+🔬 MATHEMATICAL & COMPUTATIONAL PROOF OF BIOPHYSICAL AUDIT FORMULAS
+==============================================================================
+
+[PROOF 1: Boundary & Symmetry Limit]
+  • Identical Target vs Off-Target -> ddG_dynamic = 0.000000 kcal/mol  [VERIFIED ✅]
+
+[PROOF 2: Canonical Ensemble & Probability Conservation]
+  • Sum of Boltzmann Probabilities (Sum P_n) = 1.000000             [VERIFIED ✅]
+  • Bounds Check: C=0 -> 0.0%, C=1 -> 100.0%                       [VERIFIED ✅]
+  • Real MD Ensemble: <C> = 95.2%, <dE_contact> = -3.863 kcal/mol [VERIFIED ✅]
+
+[PROOF 3: Eyring Kinetic Limit & Steric Packing]
+  • Zero-Barrier Limit (dG‡=0) -> tau = 0.0010 ns (= tau_0)        [VERIFIED ✅]
+  • Active Barrier (6.5 kcal/mol) -> tau_est = 38.23 ns               [VERIFIED ✅]
+  • Pocket Packing Ratio (eta_pack) = 0.562 (Ideal Rebek ~0.55)     [VERIFIED ✅]
+
+[PROOF 4: Benchmark Discrimination (Active TB Leads vs Inactive/Toxic Decoys)]
+  • Triclosan (Ref)    -> ddG_dynamic =  -5.506 kcal/mol | PASS (Selective Lead)
+  • MTB-NL4 (Lead)     -> ddG_dynamic =  -6.318 kcal/mol | PASS (Selective Lead)
+  • Decoy-A (Weak)     -> ddG_dynamic =  -0.158 kcal/mol | REJECT (Non-Selective)
+  • Decoy-B (Toxic)    -> ddG_dynamic =   1.013 kcal/mol | REJECT (Non-Selective)
+
+==============================================================================
+🎉 ALL 4 MATHEMATICAL & BENCHMARK PROOFS PASSED WITH ZERO ERRORS!
+==============================================================================

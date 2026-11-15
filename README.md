@@ -3,6 +3,16 @@
 An open-source computational biophysics and drug-screening framework designed to overcome the false-positive and off-target toxicity limitations of static molecular docking (AutoDock Vina) at physiological body temperature (**310 K**).
 
 ---
+## 💡 Simple Explanation (Why This Is Important)
+
+Traditional drug-discovery software (such as AutoDock Vina) functions like a **static photograph**—it merely checks whether a drug molecule fits into a protein pocket. This approach often carries the risk of "false positives" and potential toxic side effects within the human body.
+
+My framework operates like a **"live video" at human body temperature (37°C / 310 K)**:
+1. **Comparison of Fit ($\Delta G_{\text{Vina}}$):** Does the drug (acting like a "key") fit better into the proteins of *Mycobacterium tuberculosis* (TB)—the "bad locks"—than it does into human proteins—the "good locks"?
+2. **Stability at Body Temperature ($-RT \ln(f_{\text{target}}/f_{\text{off-target}})$):** At 310 K, molecules are in constant vibration. Does the drug remain firmly bound to the TB target, while dissociating from other human proteins ("off-targets")?
+3. **Tight Fit within the Pocket ($\Delta\text{SASA}/V_{\text{pocket}}$):** Does the drug displace water molecules to achieve a snug, secure fit within the TB protein pocket?
+
+If the combined score across these criteria is **$\le -3.0\text{ kcal/mol}$**, the molecule is considered a **safe and selective TB drug lead**.
 
 ## 📐 Core Mathematical Framework (At $T = 310\text{ K}$, $RT = 0.616033\text{ kcal/mol}$)
 

@@ -97,16 +97,14 @@ axs[0].plot(fpr_s, tpr_s, color="#e67e22", lw=2.0, linestyle="--", label=f"Stati
 axs[0].plot([0, 1], [0, 1], color="gray", linestyle=":", label="Random Classifier (AUC = 0.500)")
 axs[0].set_xlabel("False Positive Rate (1 - Specificity)")
 axs[0].set_ylabel("True Positive Rate (Sensitivity)")
-axs[0].set_title("A. Calibrated DUD-E InhA Benchmark (310 K Thermal Noise, n=30)")
+axs[0].set_title("A. DUD-E-inspired Proxy (in-sample, n=30)")
 axs[0].legend(loc="lower right", fontsize=8.5)
 axs[0].grid(True, alpha=0.3)
 
 axs[1].boxplot([act_ddg, dec_ddg], tick_labels=["Active Inhibitors\n(n=15)", "Inactive Decoys\n(n=15)"],
                patch_artist=True, boxprops=dict(facecolor="#d2e3fc", color="#1a73e8"))
-axs[1].axhline(-3.0, color="#188038", linestyle="--", lw=1.5, label="Safe Selectivity Cutoff (-3.0 kcal/mol)")
-axs[1].set_ylabel("Dynamic Selectivity ΔΔG_dynamic (kcal/mol)")
+axs[1].set_ylabel("S_dynamic (kcal/mol)")
 axs[1].set_title("B. Active vs. Decoy Energy Separation")
-axs[1].legend(loc="upper left", fontsize=8.5)
 axs[1].grid(True, alpha=0.3)
 
 plt.tight_layout()

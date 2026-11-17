@@ -1,0 +1,30 @@
+========================================================================================
+💊 20-MEDICINE SELECTIVITY BENCHMARK (FORMULA v2.0 DIMENSIONLESS & EPSILON-SAFE)
+========================================================================================
+Medicine / Compound Name               | Class    | Vina dG  | S_dyn_v2  | Audit
+----------------------------------------------------------------------------------------
+01. Isoniazid-NAD Adduct (1st-Line TB) | TB Drug  |  -12.1   |  -6.917   | PASS ✅
+02. Ethionamide-NAD (2nd-Line TB)      | TB Drug  |  -11.5   |  -6.230   | PASS ✅
+03. Prothionamide-NAD (MDR-TB)         | TB Drug  |  -11.4   |  -5.921   | PASS ✅
+04. PT70 (Clinical TB Lead)            | TB Drug  |  -11.9   |  -6.466   | PASS ✅
+05. NITD-916 (Novartis TB Lead)        | TB Drug  |  -11.4   |  -6.068   | PASS ✅
+06. GSK693 (GSK TB Candidate)          | TB Drug  |  -10.9   |  -5.705   | PASS ✅
+07. Triclosan (Direct InhA Drug)       | TB Drug  |  -10.5   |  -4.530   | PASS ✅
+08. GEQ (Diphenyl Ether Lead)          | TB Drug  |  -11.2   |  -5.768   | PASS ✅
+09. Pyrrolidine Carboxamide-1          | TB Drug  |  -10.8   |  -5.353   | PASS ✅
+10. AN12855 (Benzoxaborole Lead)       | TB Drug  |  -11.1   |  -5.864   | PASS ✅
+11. Paracetamol (Analgesic Control)    | Control  |   -6.2   |   0.487   | REJECT ❌
+12. Ibuprofen (NSAID Control)          | Control  |   -7.5   |   0.659   | REJECT ❌
+13. Atorvastatin (Human HMG-CoA Drug)  | Control  |   -9.4   |   1.251   | REJECT ❌
+14. Ketoconazole (CYP3A4 Off-Target)   | Control  |   -9.6   |   0.621   | REJECT ❌
+15. Warfarin (Anticoagulant Control)   | Control  |   -8.1   |   0.540   | REJECT ❌
+16. Metformin (Diabetes Control)       | Control  |   -5.4   |   0.253   | REJECT ❌
+17. Ciprofloxacin (DNA Gyrase Drug)    | Control  |   -8.3   |  -0.092   | REJECT ❌
+18. Fluconazole (Fungal CYP51 Drug)    | Control  |   -7.8   |   0.283   | REJECT ❌
+19. Sorafenib (Human Kinase Off-Target) | Control  |   -9.8   |   0.520   | REJECT ❌
+20. Aspirin (Salicylate Control)       | Control  |   -6.0   |   0.332   | REJECT ❌
+========================================================================================
+🎯 Classification Accuracy (20 Medicines) : 20/20 (100%)
+📊 Static Vina ROC-AUC                    : 1.000
+🚀 Dynamic Selectivity v2.0 ROC-AUC       : 1.000
+========================================================================================

@@ -1,0 +1,12 @@
+=== SUMMARY 2026-11-20_10:47 ===
+em_x641                DONE
+nvt_x641_310           DONE
+npt_x641_310           DONE
+npt_x641_310_long      DONE
+eq310_nl4_m2           RUNNING (step 11500)
+eq310_nl4_m1           NOT STARTED
+eq310_nl4_m3           FAILED
+--- x641 pressure (npt_x641_310_long, avg) ---
+ 17  Pressure        18  Constr.-rmsd    19  Box-X           20  Box-Y         
+--- nl4_m2 temp (if done) ---
+not yet

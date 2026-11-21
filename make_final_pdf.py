@@ -1,3 +1,4 @@
+# NOTE: legacy script. The current report is built by make_final_v10.py; do not run this file in full.
 import os
 import matplotlib.pyplot as plt
 from reportlab.lib.pagesizes import A4
@@ -91,7 +92,7 @@ story.append(box_table)
 story.append(Spacer(1, 6))
 
 sec_list = [
-    ("4. Target &amp; Top Screened Lead Candidate (MTB-NL4)", "Target: M. tuberculosis Enoyl-ACP Reductase (InhA, PDB: 4TZK) | Lead Candidate: MTB-NL4 (Novel_Lead_4_5CF3)<br/><b>IUPAC Name:</b> 5-hydroxy-2-(pyridin-2-yl)-N-[4-(trifluoromethyl)phenyl]benzamide<br/><b>Canonical SMILES:</b> O=C(Nc1ccc(C(F)(F)F)cc1)c1cc(O)ccc1-c1ccccn1<br/><b>Properties:</b> Formula: C19H13F3N2O2 | MW: 358.32 g/mol | cLogP: 2.27 | PAINS-free | Vina Affinity: -11.703 kcal/mol."),
+    ("4. Target &amp; Top Screened Lead Candidate (MTB-NL4)", "Target: M. tuberculosis Enoyl-ACP Reductase (InhA, PDB: 4TZK) | Lead Candidate: MTB-NL4 (Novel_Lead_4_5CF3)<br/><b>IUPAC Name:</b> 5-hydroxy-2-(pyridin-2-yl)-N-[4-(trifluoromethyl)phenyl]benzamide<br/><b>Canonical SMILES:</b> O=C(Nc1ccc(C(F)(F)F)cc1)c1cc(O)ccc1-c1ccccn1<br/><b>Properties:</b> Formula: C19H13F3N2O2 | MW: 358.32 g/mol | cLogP: 4.73 (RDKit Crippen) | PAINS-free | Vina Affinity: -11.703 kcal/mol (earlier setup; superseded, see make_final_v10.py)."),
     ("5. Mathematical &amp; Thermodynamic Verification (PROOF_REPORT.txt)", "4/4 Automated Proofs Verified: Boltzmann Probability Conservation (Sum P_n = 1.000000), Zero-Selectivity Symmetry (0.000000 kcal/mol), Zero-Singularity Crash Safety (f_off = 0), and Eyring Residence Time (34.40 - 38.23 ns; Rebek steric packing = 0.562)."),
     ("6. 30-Molecule DUD-E Thermal Noise Benchmark", "Across 15 active InhA inhibitors and 15 decoys under 310 K thermal noise, Dynamic Selectivity achieved ROC-AUC = 1.000 compared to Static Vina ROC-AUC = 0.893."),
     ("7. 20-Medicine Clinical &amp; Off-Target Selectivity Audit", "Tested against 10 real TB drugs/leads (Isoniazid-NAD, Ethionamide-NAD, PT70, NITD-916, GSK693, Triclosan, AN12855) and 10 off-target/toxic FDA drugs (Atorvastatin, Ketoconazole, Sorafenib, Ibuprofen): 20/20 (100% Accuracy), Youden's J = 1.00 (theta* = -4.530 kcal/mol)."),

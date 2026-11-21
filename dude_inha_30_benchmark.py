@@ -13,7 +13,7 @@ def compute_ddg_dynamic(dg_t, dg_o, f_t, f_o, sasa_t, vp_t, sasa_o, vp_o):
 # 30-Molecule DUD-E InhA Benchmark Dataset (15 Known Actives vs 15 Property-Matched Decoys)
 # Columns: (Name, Label[1=Active, 0=Decoy], Vina_InhA, Vina_OffTarget, f_InhA, f_Off, SASA_InhA, Vp_InhA, SASA_Off, Vp_Off)
 dataset = [
-    # --- 15 VERIFIED InhA ACTIVES (DUD-E / ChEMBL Reference Set) ---
+    # --- 15 InhA ACTIVES (ChEMBL IDs; numeric columns are hard-coded proxy inputs, see report Section 4) ---
     ("PT70 (Diphenyl Ether)",   1, -11.4, -7.1, 0.78, 0.06, 415, 650, 260, 710),
     ("PT91 (Alkyl Diphenyl)",   1, -11.1, -7.3, 0.74, 0.08, 410, 650, 270, 710),
     ("Triclosan (Ref Drug)",    1, -10.5, -6.9, 0.70, 0.09, 390, 650, 250, 710),
@@ -103,7 +103,7 @@ axs[0].grid(True, alpha=0.3)
 
 axs[1].boxplot([act_ddg, dec_ddg], tick_labels=["Active Inhibitors\n(n=15)", "Inactive Decoys\n(n=15)"],
                patch_artist=True, boxprops=dict(facecolor="#d2e3fc", color="#1a73e8"))
-axs[1].set_ylabel("S_dynamic (kcal/mol)")
+axs[1].set_ylabel("ddG_dynamic, v1.0 form (kcal/mol)")
 axs[1].set_title("B. Active vs. Decoy Energy Separation")
 axs[1].grid(True, alpha=0.3)
 

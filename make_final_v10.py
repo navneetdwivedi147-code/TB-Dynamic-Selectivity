@@ -92,26 +92,21 @@ story = [
         styles["Normal"]
     ),
     Spacer(1, 6),
-    Paragraph("<b>2. Formula Evolution Across 3 Iterations (v1.0 -&gt; v2.0 -&gt; v3.0)</b>", styles["Heading3"])
+    Paragraph("<b>2. Formula Evolution Across 3 Iterations (v1.0 -&gt; v2.0 -&gt; v3.0 -&gt; v4.0)</b>", styles["Heading3"])
 ]
 evo_data = [
     [Paragraph("<b>Version</b>", cell), Paragraph("<b>Core Structure</b>", cell), Paragraph("<b>Methodological Upgrades &amp; Fixes</b>", cell)],
     [Paragraph("<b>v1.0</b>", cell), Paragraph("ddG_dyn = (dG_t - dG_o) - RT*ln(f_t/f_o) - 1.5*RT*(dSASA_t/Vp_t - dSASA_o/Vp_o)", cell), Paragraph("Initial heuristic combining static Vina docking score, persistence, and burial (-3.0 cutoff).", cell)],
     [Paragraph("<b>v2.0</b>", cell), Paragraph("S_dyn = w1*(dG_t - dG_o) - w2*RT*ln((f_t+e)/(f_o+e)) - w3*RT*(dSASA_t - dSASA_o)/SASA_lig", cell), Paragraph("Fixed kcal/mol units (A^2/A^2), added epsilon=0.01 crash safety &amp; weights (w1, w2, w3).", cell)],
-    [Paragraph("<b>v3.0</b>", cell), Paragraph("S_dyn = w1*(&lt;dE_t&gt; - &lt;dE_o&gt;) - w2*RT*ln((f_key,t+e)/(f_key,o+e)) - w3*RT*(&lt;SASA_bur,t&gt; - &lt;SASA_bur,o&gt;)/SASA_lig", cell), Paragraph("Resolved sign via SASA_bur &gt;= 0, MD ensemble &lt;dE_int&gt;, catalytic f_key (d &lt;= 3.5 A) &amp; Youden's J cutoff theta*.", cell)]
+    [Paragraph("<b>v3.0</b>", cell), Paragraph("S_dyn = w1*(&lt;dE_t&gt; - &lt;dE_o&gt;) - w2*RT*ln((f_key,t+e)/(f_key,o+e)) - w3*RT*(&lt;SASA_bur,t&gt; - &lt;SASA_bur,o&gt;)/SASA_lig", cell), Paragraph("Resolved sign via SASA_bur &gt;= 0, MD ensemble &lt;dE_int&gt;, catalytic f_key (d &lt;= 3.5 A) &amp; Youden's J cutoff theta*.", cell)],
+    [Paragraph("<b>v4.0</b>", cell), Paragraph("S = w1*(&lt;dE&gt;_t - &lt;dE&gt;_o) - w2*RT*ln((&lt;f_key&gt;_t+eps)/(&lt;f_key&gt;_o+eps)) - w3*RT*(&lt;SASA_bur&gt;_t/SASA_lig - &lt;SASA_bur&gt;_o/SASA_lig); tau_est = tau0*exp(-S/RT)", cell), Paragraph("Ensemble from 9 Vina poses (Boltzmann); smooth Tyr158 contact weight (1 at &lt;=3.0 A, 0 at &gt;=4.2 A) replaces hard 3.5 A step; eps = 0.02 chosen by principle; gate (dE_t &gt; 0 gives S = 1e6); reference = 641 (InhA ligand); tau_est heuristic, tracks S.", cell)]
 ]
 t_evo = Table(evo_data, colWidths=(70, 200, 215))
 t_evo.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,0),colors.HexColor("#E2E8F0")),("GRID",(0,0),(-1,-1),0.6,colors.HexColor("#94A3B8")),("VALIGN",(0,0),(-1,-1),"TOP"),("PADDING",(0,0),(-1,-1),4)]))
 story += [
     t_evo, Spacer(1, 6),
     Paragraph("<b>3. Core Mathematical Equations (v4.0) &amp; Conceptual Overview</b>", styles["Heading3"]),
-    Paragraph(
-        "<b>Eq. 2 (ensemble inputs):</b> Boltzmann weights over Vina poses P_n = exp(-(E_n-E_min)/RT)/Sum_i exp(-(E_i-E_min)/RT), RT = 0.616 kcal/mol; ensemble means of dE_int (= Vina score, proxy), f_key (smooth contact weight of Tyr158, 1 at &lt;= 3.0 A, 0 at &gt;= 4.2 A) and SASA_bur (free minus bound, ligand) over the poses.<br/>"
-        "<b>Eq. 1 (S_dynamic v4.0):</b> S = w1(&lt;dE&gt;_t - &lt;dE&gt;_o) - w2*RT*ln((&lt;f_key&gt;_t+eps)/(&lt;f_key&gt;_o+eps)) - w3*RT*(&lt;SASA_bur&gt;_t/SASA_lig - &lt;SASA_bur&gt;_o/SASA_lig); reference o = 4TZK crystal ligand 641 (InhA ligand, not an off-target); w1=1.0, w2=1.0, w3=1.5, eps=0.02 (chosen from principle, not from the benchmark); gate: if &lt;dE&gt;_t &gt; 0.0 then S = 1e6.<br/>"
-        "<b>Eq. 3 (residence-time index, derived from Eq. 1):</b> dG_proxy = -S; tau_est = tau0*exp(-S/RT), tau0 = 1 (arbitrary units). Heuristic only; not a measured off-rate; not validated against experiment; tau tracks S monotonically, so its AUC equals that of S.<br/>"
-        "<i>Summary:</i> v4.0 uses docking-pose ensembles (9 Vina poses), not MD trajectories; reference is one InhA ligand (641), not a human off-target; weights are heuristic and uncalibrated; the burial term contributes about 5%.",
-        styles["Normal"]
-    ),
+    Image("formulas_v4_box.png", width=475, height=240),
     Spacer(1, 4)
 ]
 

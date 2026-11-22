@@ -104,18 +104,16 @@ t_evo = Table(evo_data, colWidths=(70, 200, 215))
 t_evo.setStyle(TableStyle([("BACKGROUND",(0,0),(-1,0),colors.HexColor("#E2E8F0")),("GRID",(0,0),(-1,-1),0.6,colors.HexColor("#94A3B8")),("VALIGN",(0,0),(-1,-1),"TOP"),("PADDING",(0,0),(-1,-1),4)]))
 story += [
     t_evo, Spacer(1, 6),
-    Paragraph("<b>3. Core Mathematical Equations (v3.0) &amp; Conceptual Overview</b>", styles["Heading3"]),
+    Paragraph("<b>3. Core Mathematical Equations (v4.0) &amp; Conceptual Overview</b>", styles["Heading3"]),
     Paragraph(
-        "<b>Eq. 1 (Dynamic Score v3.0):</b> S_dynamic = w1*(&lt;dE_int,target&gt; - &lt;dE_int,off&gt;) - w2*RT*ln((f_key,target + eps)/(f_key,off + eps)) - w3*RT*((&lt;SASA_bur,target&gt;/SASA_lig) - (&lt;SASA_bur,off&gt;/SASA_lig)), where T = 310 K (RT = 0.616033 kcal/mol) and eps = 0.01.<br/>"
-        "<b>Eq. 2 (Boltzmann Ensemble Contact):</b> P_n = exp(-E_n/RT) / Sum_i exp(-E_i/RT); &lt;C&gt; = Sum_n P_n*C_n; &lt;dE_contact&gt; = Sum_n P_n*C_n*dE_n.<br/>"
-        "<b>Eq. 3 (Residence Time &amp; Packing):</b> tau_est = tau_0 * exp(dG_barrier_proxy / RT); eta_pack = V_ligand / V_pocket ~ 0.55.<br/>"
-        "<i>Conceptual Summary:</i> Unlike single-frame docking, S_dynamic evaluates (i) ensemble-averaged interaction energy gaps (&lt;dE_int&gt;), (ii) catalytic key-residue contact persistence (f_key, d &lt;= 3.5 A) under 310 K thermal fluctuations, and (iii) fractional buried surface area (SASA_bur / SASA_lig), evaluated relative to an off-target reference term (in the current proxy benchmarks this is a parameterized proxy value; no off-target protein structure, e.g. human FASN, has been simulated), while tau_est serves as a dimensionless-scaled heuristic kinetic index rather than macroscopic experimental off-rate.",
+        "<b>Eq. 2 (ensemble inputs):</b> Boltzmann weights over Vina poses P_n = exp(-(E_n-E_min)/RT)/Sum_i exp(-(E_i-E_min)/RT), RT = 0.616 kcal/mol; ensemble means of dE_int (= Vina score, proxy), f_key (smooth contact weight of Tyr158, 1 at &lt;= 3.0 A, 0 at &gt;= 4.2 A) and SASA_bur (free minus bound, ligand) over the poses.<br/>"
+        "<b>Eq. 1 (S_dynamic v4.0):</b> S = w1(&lt;dE&gt;_t - &lt;dE&gt;_o) - w2*RT*ln((&lt;f_key&gt;_t+eps)/(&lt;f_key&gt;_o+eps)) - w3*RT*(&lt;SASA_bur&gt;_t/SASA_lig - &lt;SASA_bur&gt;_o/SASA_lig); reference o = 4TZK crystal ligand 641 (InhA ligand, not an off-target); w1=1.0, w2=1.0, w3=1.5, eps=0.02 (chosen from principle, not from the benchmark); gate: if &lt;dE&gt;_t &gt; 0.0 then S = 1e6.<br/>"
+        "<b>Eq. 3 (residence-time index, derived from Eq. 1):</b> dG_proxy = -S; tau_est = tau0*exp(-S/RT), tau0 = 1 (arbitrary units). Heuristic only; not a measured off-rate; not validated against experiment; tau tracks S monotonically, so its AUC equals that of S.<br/>"
+        "<i>Summary:</i> v4.0 uses docking-pose ensembles (9 Vina poses), not MD trajectories; reference is one InhA ligand (641), not a human off-target; weights are heuristic and uncalibrated; the burial term contributes about 5%.",
         styles["Normal"]
     ),
     Spacer(1, 4)
 ]
-if os.path.exists("formulas_v3_box.png"):
-    story += [Image("formulas_v3_box.png", width=475, height=160), Spacer(1, 4)]
 
 story += [Paragraph("<b>3b. S_dynamic v4.0: ensemble inputs, score, and residence-time index (one linked system)</b>", styles["Heading3"]),
     Paragraph("<b>Eq. 2 (ensemble inputs):</b> Boltzmann weights over Vina poses P_n = exp(-(E_n-E_min)/RT)/Sum_i exp(-(E_i-E_min)/RT), RT = 0.616 kcal/mol; ensemble means of dE_int (= Vina score, proxy), f_key (Tyr158 within 3.5 A) and SASA_bur (free minus bound, ligand) over the poses.", styles["Normal"]), Spacer(1,3),

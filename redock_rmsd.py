@@ -1,3 +1,4 @@
+# SUPERSEDED: graph-only atom mapping gave wrong RMSD for ring/symmetric atoms. Use redock_rmsd_calc.py (RDKit CalcRMS, bond-aware).
 import numpy as np
 from rdkit import Chem
 from rdkit.Chem import rdDetermineBonds
